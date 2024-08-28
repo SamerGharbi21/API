@@ -2,8 +2,8 @@ from fastapi import FastAPI, HTTPException
 import joblib
 from pydantic import BaseModel
 
-model = joblib.load('Log_Reg.joblib')
-scaler = joblib.load('Scaler.joblib')
+model = joblib.load('logistic_model.joblib')
+scaler = joblib.load('scaler.joblib')
 app = FastAPI()
 
 # GET request
@@ -18,14 +18,19 @@ async def read_item(item_id):
     return {"item_id": item_id}
 
 class InputFeatures(BaseModel):
-    Engine_Size: float
-    Mileage: float
+    appearance: int 
+    games_injured: int 
+    award: int 
+    highest_value: int 
+    
 
 
 def preprocessing(input_features: InputFeatures):
     dict_f = {
-                'Engine_Size': input_features.Engine_Size,
-                'Mileage': input_features.Mileage,
+                'appearance': input_features.appearance,
+                'games_injured': input_features.games_injured,
+                'award': input_features.award,
+                'highest_value': input_features.highest_value,
 }
     feature_list = [dict_f[key] for key in sorted(dict_f)]
     return scaler.transform([list(dict_f.values())])
