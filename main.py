@@ -1,5 +1,4 @@
 from fastapi import FastAPI, HTTPException
-import requests
 import joblib
 from pydantic import BaseModel
 
