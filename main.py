@@ -3,7 +3,7 @@ import joblib
 from pydantic import BaseModel
 
 model = joblib.load('logistic_model.joblib')
-scaler = joblib.load('scaler.joblib')
+scaler = joblib.load('Scaler1.joblib')
 app = FastAPI()
 
 # GET request
