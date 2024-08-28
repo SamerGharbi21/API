@@ -3,7 +3,7 @@ import joblib
 from pydantic import BaseModel
 
 model = joblib.load('logistic_model.joblib')
-scaler = joblib.load('Scaler1.joblib')
+scaler = joblib.load('scaler.joblib')
 app = FastAPI()
 
 # GET request
@@ -22,7 +22,6 @@ class InputFeatures(BaseModel):
     games_injured: int 
     award: int 
     highest_value: int 
-    current_value_category_encoded: int
     
 
 
@@ -32,7 +31,6 @@ def preprocessing(input_features: InputFeatures):
                 'games_injured': input_features.games_injured,
                 'award': input_features.award,
                 'highest_value': input_features.highest_value,
-                'current_value_category_encoded': input_features.current_value_category_encoded,
 }
     feature_list = [dict_f[key] for key in sorted(dict_f)]
     return scaler.transform([list(dict_f.values())])
