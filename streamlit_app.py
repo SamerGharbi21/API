@@ -25,7 +25,7 @@ if st.button("Predict Cluster"):
         response_data = response.json()
         
         # Debug: Print the full response content
-        st.write(f"Response Content: {response_data}")
+        # st.write(f"Response Content: {response_data}")
         
         # Check the response status
         if response.status_code == 200:
