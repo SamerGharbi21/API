@@ -8,8 +8,8 @@ API_URL = "https://api-nvaa.onrender.com/predict"  # Update with your FastAPI UR
 st.title("Reg Model")
 
 # Input fields for user to enter data using sliders
-appearance = st.slider("Select appearance", min_value=0, max_value=100, value=25)
-highest_value = st.slider("Select highest Value", min_value=0, max_value=1_000_000_00, value=5_000)
+appearance = st.slider("Select appearance", min_value=0, max_value=101, value=25)
+highest_value = st.slider("Select highest Value", min_value=10000, max_value=32000000, value=5_000)
 
 # Button to trigger the prediction
 if st.button("Predict Cluster"):
