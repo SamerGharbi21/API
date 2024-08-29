@@ -31,7 +31,7 @@ if st.button("Predict Cluster"):
         if response.status_code == 200:
             if 'sale_price_category' in response_data:
                 cluster = response_data['sale_price_category']
-                st.success(f"The predicted cluster is: {cluster}")
+                st.success(f"The predicted is : {cluster}")
             else:
                 st.error("Key 'sale_price_category' not found in the response.")
         else:
