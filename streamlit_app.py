@@ -31,7 +31,7 @@ if st.button("Predict Cluster"):
         if response.status_code == 200:
             # Extract and display the predicted cluster
             result = response.json()
-            cluster = result['cluster']
+            cluster = result['sale_price_category']
             st.success(f"The predicted cluster is: {cluster}")
         else:
             st.error("Error in prediction. Please check your input and try again.")
