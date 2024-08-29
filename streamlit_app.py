@@ -19,21 +19,17 @@ if st.button("Predict Cluster"):
         "highest_value": highest_value
     }
     
-    try:
-        # Make a POST request to the FastAPI endpoint
-        response = requests.post(API_URL, json=input_data)
-        
-        # Print the response details for debugging
-        #st.write(f"Response Status Code: {response.status_code}")
-        #st.write(f"Response Content: {response.text}")
-        
-        # Check the response status
-        if response.status_code == 200:
-            # Extract and display the predicted cluster
-            result = response.json()
-            cluster = result['sale_price_category']
-            st.success(f"The predicted cluster is: {cluster}")
-        else:
-            st.error("Error in prediction. Please check your input and try again.")
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
+response = requests.post(API_URL, json=input_data)
+
+# Debug: Print the full response content
+st.write(f"Response Content: {response.json()}")
+
+if response.status_code == 200:
+    result = response.json()
+    if 'sale_price_category' in result:
+        cluster = result['sale_price_category']
+        st.success(f"The predicted cluster is: {cluster}")
+    else:
+        st.error("Key 'sale_price_category' not found in the response.")
+else:
+    st.error("Error in prediction. Please check your input and try again.")
