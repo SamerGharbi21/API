@@ -12,7 +12,7 @@ appearance = st.slider("Select appearance", min_value=0, max_value=101, value=25
 highest_value = st.slider("Select highest Value", min_value=10000, max_value=32000000, value=5_000)
 
 # Button to trigger the prediction
-if st.button("Predict Cluster"):
+if st.button("Predict Player Vaule"):
     # Prepare data to send to the FastAPI backend
     input_data = {
         "appearance": appearance,
